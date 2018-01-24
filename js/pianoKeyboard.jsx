@@ -28,22 +28,22 @@ class PianoKeyboard extends React.Component {
             'stroke': 'rgb(0, 0, 0)'
         };
 
-        var isBlackKey = (i) => {
+        let isBlackKey = (i) => {
             return !(i == 0 || ((i+2) % 7) == 0 || ((i-2) % 7) == 0);
         };
 
-        var whiteKeysRects = [... new Array(pianoLayoutCfg.keys.number).keys()].map(i => {
-            var margin = pianoLayoutCfg.border.width/2;
-            var wkw = pianoLayoutCfg.keys.whiteKeyWidth;
-            var wkh =  pianoLayoutCfg.keys.whiteKeyLength;
+        let whiteKeysRects = [... new Array(pianoLayoutCfg.keys.number).keys()].map(i => {
+            let margin = pianoLayoutCfg.border.width/2;
+            let wkw = pianoLayoutCfg.keys.whiteKeyWidth;
+            let wkh =  pianoLayoutCfg.keys.whiteKeyLength;
             return <rect x={margin + i * wkw} y="0" width={wkw} height={wkh} style={whiteKeyStyle} />;
         });
 
-        var blackKeysRects = [... new Array(pianoLayoutCfg.keys.number).keys()].filter(isBlackKey).map(i => {
-            var margin = pianoLayoutCfg.border.width/2;
-            var wkw = pianoLayoutCfg.keys.whiteKeyWidth;
-            var bkw = pianoLayoutCfg.keys.blackKeyWidth;
-            var bkh =  pianoLayoutCfg.keys.blackKeyLength;
+        let blackKeysRects = [... new Array(pianoLayoutCfg.keys.number).keys()].filter(isBlackKey).map(i => {
+            let margin = pianoLayoutCfg.border.width/2;
+            let wkw = pianoLayoutCfg.keys.whiteKeyWidth;
+            let bkw = pianoLayoutCfg.keys.blackKeyWidth;
+            let bkh =  pianoLayoutCfg.keys.blackKeyLength;
             return <rect x={margin + i * wkw - 0.5 * bkw} y="0" width={bkw} height={bkh} style={blackKeyStyle} />;
         });
 
