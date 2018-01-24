@@ -1,5 +1,4 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
 
 class PianoKeyboard extends React.Component {
     render() {
@@ -18,7 +17,7 @@ class PianoKeyboard extends React.Component {
         };
         const whiteKeyStyle = {
             'fill': 'rgb(255, 255, 255)',
-            'stroke-width': '2',
+            'strokeWidth': '2',
             'stroke': 'rgb(0, 0, 0)'
         };
 
@@ -36,7 +35,8 @@ class PianoKeyboard extends React.Component {
             let margin = pianoLayoutCfg.border.width/2;
             let wkw = pianoLayoutCfg.keys.whiteKeyWidth;
             let wkh =  pianoLayoutCfg.keys.whiteKeyLength;
-            return <rect x={margin + i * wkw} y="0" width={wkw} height={wkh} style={whiteKeyStyle} />;
+            return <rect key={'white'+i} x={margin + i * wkw} y="0" width={wkw} height={wkh} style={whiteKeyStyle}
+                         onClick={() => this.props.keyPressed(i, 'white')}/>;
         });
 
         let blackKeysRects = [... new Array(pianoLayoutCfg.keys.number).keys()].filter(isBlackKey).map(i => {
@@ -44,7 +44,8 @@ class PianoKeyboard extends React.Component {
             let wkw = pianoLayoutCfg.keys.whiteKeyWidth;
             let bkw = pianoLayoutCfg.keys.blackKeyWidth;
             let bkh =  pianoLayoutCfg.keys.blackKeyLength;
-            return <rect x={margin + i * wkw - 0.5 * bkw} y="0" width={bkw} height={bkh} style={blackKeyStyle} />;
+            return <rect key={'white'+i} x={margin + i * wkw - 0.5 * bkw} y="0" width={bkw} height={bkh} style={blackKeyStyle}
+                         onClick={() => this.props.keyPressed(i, 'black')} />;
         });
 
         return (
