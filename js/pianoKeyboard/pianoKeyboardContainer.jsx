@@ -1,6 +1,5 @@
 var React = require('react');
-import WhiteKey from './keyWhite.jsx';
-import BlackKey from './keyBlack.jsx';
+import PianoKey from './pianoKey.jsx';
 
 class PianoKeyboard extends React.Component {
     render() {
@@ -29,7 +28,8 @@ class PianoKeyboard extends React.Component {
             let margin = pianoLayoutCfg.border.width/2;
             let wkw = pianoLayoutCfg.keys.whiteKeyWidth;
             let wkh =  pianoLayoutCfg.keys.whiteKeyLength;
-            return <WhiteKey key={'white'+i} note={i} positionX={margin + i * wkw} height={wkh} width={wkw} keyPressed={this.props.keyPressed}/>;
+            return <PianoKey key={'white'+i} keyColor="white" note={i} positionX={margin + i * wkw} height={wkh} width={wkw}
+                             keyPressed={this.props.keyPressed}/>;
         });
 
         let blackKeys = [... new Array(pianoLayoutCfg.keys.number).keys()].filter(isBlackKey).map(i => {
@@ -37,7 +37,8 @@ class PianoKeyboard extends React.Component {
             let wkw = pianoLayoutCfg.keys.whiteKeyWidth;
             let bkw = pianoLayoutCfg.keys.blackKeyWidth;
             let bkh =  pianoLayoutCfg.keys.blackKeyLength;
-            return <BlackKey key={'black'+i} note={i} positionX={margin + i * wkw - 0.5 * bkw} height={bkh} width={bkw} keyPressed={this.props.keyPressed}/>;
+            return <PianoKey key={'black'+i} keyColor='black' note={i} positionX={margin + i * wkw - 0.5 * bkw} height={bkh} width={bkw}
+                             keyPressed={this.props.keyPressed}/>;
         });
 
         return (
